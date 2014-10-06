@@ -22,6 +22,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func onAddButtonPressed(sender: AnyObject) {
         saveData()
         getData()
+        itemTextField.text = ""
+        itemTextField.resignFirstResponder()
     }
 
     func saveData() {
@@ -54,6 +56,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.didReceiveMemoryWarning()
     }
 
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myList.count
     }
@@ -68,43 +74,49 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
 
+        let alert = UIAlertController(title: "Item selected", message: "You selected item \(indexPath.row)", preferredStyle: UIAlertControllerStyle.Alert)
 
+        alert.addAction(UIAlertAction(title: "OK",
+            style: UIAlertActionStyle.Default,
+            handler: {
+                (alert: UIAlertAction!) in println("An alert of type \(alert.style.hashValue) was tapped!")
+        }))
 
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.presentViewController(alert, animated: true, completion: nil)
 
-        //let item: AnyObject = myList.removeAtIndex(indexPath.row)
-        //myList.append(item)
-
-        //tableView.moveRowAtIndexPath(indexPath, toIndexPath: NSIndexPath(forRow: myList.count - 1, inSection: 1))
-
-
-
-        //let tappedItem = itemsArray[indexPath.row]
-        //UITableViewCellAccessoryType.Checkmark
 
 
     }
+    /*
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+*/
 
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
 
-        let val = self.myList.removeAtIndex(sourceIndexPath.row)
-        self.myList.insert(val, atIndex: destinationIndexPath.row)
-
-
+        //let val: AnyObject = myList.removeAtIndex(sourceIndexPath.row)
+       // myList.insert(val, atIndex: destinationIndexPath.row)
+        //let item = myList.removeAtIndex(indexPath.row)
 
     }
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let contxt: NSManagedObjectContext = appDel.managedObjectContext!
-
-        switch editingStyle {
-        case .Delete:
-                self.myList.removeAtIndex(indexPath.row)
-                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        default:
-            return
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            contxt.deleteObject((myList[indexPath.row] as NSManagedObject))
+            myList.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            var error: NSError? = nil
+            if !contxt.save(&error) {
+                abort()
+            }
         }
+    }
+
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.view.endEditing(true)
     }
 }
 
