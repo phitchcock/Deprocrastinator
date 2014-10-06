@@ -50,6 +50,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,12 +88,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
     }
-    /*
+
     func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-*/
 
+/*
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
 
         //let val: AnyObject = myList.removeAtIndex(sourceIndexPath.row)
@@ -100,6 +101,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //let item = myList.removeAtIndex(indexPath.row)
 
     }
+*/
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -115,6 +117,31 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
+    /*
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+
+
+        var moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "More", handler:{action, indexpath in
+            println("MORE•ACTION");
+        });
+        moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
+
+        var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
+
+            let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let contxt: NSManagedObjectContext = appDel.managedObjectContext!
+
+            contxt.deleteObject((self.myList[indexPath.row] as NSManagedObject))
+            self.myList.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+
+        })
+
+
+        return [deleteRowAction, moreRowAction];
+
+    }
+*/
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.view.endEditing(true)
     }
