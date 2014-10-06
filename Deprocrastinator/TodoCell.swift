@@ -13,7 +13,6 @@ class TodoCell: UITableViewCell {
     //IBOutlets
     @IBOutlet weak var todoCellLabel: UILabel!
 
-
     override func awakeFromNib() {
         super.awakeFromNib()
     }
