@@ -14,6 +14,7 @@
 		D0C67C8019E3258D004D3707 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0C67C7F19E3258D004D3707 /* Images.xcassets */; };
 		D0C67C8319E3258D004D3707 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C67C8119E3258D004D3707 /* LaunchScreen.xib */; };
 		D0C67C8F19E3258D004D3707 /* DeprocrastinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C67C8E19E3258D004D3707 /* DeprocrastinatorTests.swift */; };
+		D0C67C9919E3261A004D3707 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C67C9819E3261A004D3707 /* TodoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		D0C67C8819E3258D004D3707 /* DeprocrastinatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeprocrastinatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C67C8D19E3258D004D3707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0C67C8E19E3258D004D3707 /* DeprocrastinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeprocrastinatorTests.swift; sourceTree = "<group>"; };
+		D0C67C9819E3261A004D3707 /* TodoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				D0C67C7519E3258D004D3707 /* AppDelegate.swift */,
 				D0C67C7A19E3258D004D3707 /* ViewController.swift */,
 				D0C67C7C19E3258D004D3707 /* Main.storyboard */,
+				D0C67C9819E3261A004D3707 /* TodoCell.swift */,
 				D0C67C7F19E3258D004D3707 /* Images.xcassets */,
 				D0C67C8119E3258D004D3707 /* LaunchScreen.xib */,
 				D0C67C7719E3258D004D3707 /* Deprocrastinator.xcdatamodeld */,
@@ -218,6 +221,7 @@
 				D0C67C7B19E3258D004D3707 /* ViewController.swift in Sources */,
 				D0C67C7619E3258D004D3707 /* AppDelegate.swift in Sources */,
 				D0C67C7919E3258D004D3707 /* Deprocrastinator.xcdatamodeld in Sources */,
+				D0C67C9919E3261A004D3707 /* TodoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
