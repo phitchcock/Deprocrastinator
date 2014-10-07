@@ -17,6 +17,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var itemTextField: UITextField!
+    @IBOutlet weak var reOrder: UIBarButtonItem!
+    @IBOutlet weak var editButtonOutlet: UIButton!
 
     //IBActions
     @IBAction func onAddButtonPressed(sender: AnyObject) {
@@ -25,6 +27,46 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         itemTextField.text = ""
         itemTextField.resignFirstResponder()
     }
+
+    @IBAction func editButton(sender: AnyObject) {
+
+        editButtonOutlet.setTitle("done", forState: .Normal)
+
+        if editButtonOutlet.titleLabel == "done" {
+            tableView.setEditing(true, animated: true)
+        }
+
+        else {
+
+
+        }
+
+    }
+
+    @IBAction func cdEditButton(sender: AnyObject) {
+
+        
+    }
+
+    @IBAction func reorderButton(sender: AnyObject) {
+
+
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var showVC = segue.destinationViewController as ShowViewController
+
+        if segue.identifier == "update" {
+            var selectedItem: NSManagedObject = myList[self.tableView.indexPathForSelectedRow()!.row] as NSManagedObject
+
+            showVC.item = selectedItem.valueForKey("item") as String
+
+
+        }
+
+        
+    }
+
 
     func saveData() {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -86,24 +128,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         self.presentViewController(alert, animated: true, completion: nil)
 
-
-
     }
+    /*
 
     func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-
-/*
-    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-
-        let item = myList[fromIndexPath.row]
-        myList.removeAtIndex(fromIndexPath.row)
-        myList.insert(item, atIndex: toIndexPath.row)
-
-    }
 */
 
+
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+
+
+        
+
+    }
+
+/*
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 
 
@@ -119,6 +160,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
     }
+*/
 
 /*
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
@@ -147,8 +189,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     }
 */
+    /*
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.view.endEditing(true)
     }
+*/
 }
 
