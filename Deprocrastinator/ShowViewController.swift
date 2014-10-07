@@ -26,7 +26,6 @@ class ShowViewController: UIViewController {
         if (existingItem != nil) {
             existingItem.setValue(itemTextField.text as String, forKey: "item")
             updatedLabel.text = "Your todo has been updated to \(itemTextField.text), would you like to update again?"
-
             contxt.save(nil)
             itemTextField.text = ""
         }

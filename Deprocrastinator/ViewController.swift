@@ -132,7 +132,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.myList.removeAtIndex(sourceIndexPath.row)
         self.myList.insert(moveItem, atIndex: destinationIndexPath.row)
     }
-/*
+    
+/* TODO
 
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
 
@@ -158,20 +159,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         });
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
 
-
-
         var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
-
 
             contxt.deleteObject((self.myList[indexPath.row] as NSManagedObject))
             self.myList.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-
         })
-
-
         return [moreRowAction];
-
     }
 */
 
