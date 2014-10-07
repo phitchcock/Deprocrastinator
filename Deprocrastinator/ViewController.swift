@@ -35,21 +35,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
-    /*
-    @IBAction func onEditButtonPressed(sender: AnyObject) {
-        tableView.editing = !tableView.editing
-        if (editing == true) {
-            sender.setTitle("Done", forState: UIControlState.Normal)
-            tableView.setEditing(false, animated: true)
-            editing = true
-        } else if (editing == false) {
-            sender.setTitle("Edit", forState: UIControlState.Normal)
-            tableView.setEditing(true, animated: true)
-            editing = true
-        }
-    }
-    */
-
     func saveData() {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let contxt: NSManagedObjectContext = appDel.managedObjectContext!
@@ -99,7 +84,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let contxt: NSManagedObjectContext = appDel.managedObjectContext!
-
         if editingStyle == UITableViewCellEditingStyle.Delete {
 
             var alert = UIAlertController(title: "Are You Sure?", message: "Plesae make sure you would like to remove this task!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -115,16 +99,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     abort()
                 }
             }
-
             var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
                 UIAlertAction in
                 NSLog("Cancel Pressed")
             }
             alert.addAction(okAction)
             alert.addAction(cancelAction)
-            
             self.presentViewController(alert, animated: true, completion: nil)
-
         }
     }
 
@@ -133,52 +114,39 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     override func setEditing(editing: Bool, animated: Bool) {
-
-        super.setEditing(true, animated: true)
-        self.tableView.setEditing(true, animated: true)
-
         if (editing) {
-
+            super.setEditing(true, animated: true)
+            self.tableView.setEditing(true, animated: true)
         } else {
-
-
+            super.setEditing(false, animated: true)
+           self.tableView.setEditing(false, animated: true)
         }
     }
-
-/*
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-
-        let alert = UIAlertController(title: "Item selected", message: "You selected item \(indexPath.row)", preferredStyle: UIAlertControllerStyle.Alert)
-
-        alert.addAction(UIAlertAction(title: "OK",
-            style: UIAlertActionStyle.Default,
-            handler: {
-                (alert: UIAlertAction!) in println("An alert of type \(alert.style.hashValue) was tapped!")
-        }))
-
-        self.presentViewController(alert, animated: true, completion: nil)
-
-    }
-*/
-
 
     func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
 
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-
         var moveItem: AnyObject = self.myList[sourceIndexPath.row]
         self.myList.removeAtIndex(sourceIndexPath.row)
         self.myList.insert(moveItem, atIndex: destinationIndexPath.row)
-
-        //myList[self.tableView.indexPathForSelectedRow().row]
-        //NSString *stringToMove = self.tableData[sourceIndexPath.row];
-        //[self.tableData removeObjectAtIndex:sourceIndexPath.row];
-        //[self.tableData insertObject:stringToMove atIndex:destinationIndexPath.row];
-
     }
 /*
+
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+
+    let alert = UIAlertController(title: "Item selected", message: "You selected item \(indexPath.row)", preferredStyle: UIAlertControllerStyle.Alert)
+
+    alert.addAction(UIAlertAction(title: "OK",
+    style: UIAlertActionStyle.Default,
+    handler: {
+    (alert: UIAlertAction!) in println("An alert of type \(alert.style.hashValue) was tapped!")
+    }))
+
+    self.presentViewController(alert, animated: true, completion: nil)
+
+    }
 
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
 
