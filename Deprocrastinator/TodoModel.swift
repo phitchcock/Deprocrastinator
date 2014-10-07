@@ -14,5 +14,6 @@ import CoreData
 class TodoModel: NSManagedObject {
 
     @NSManaged var item: String
+    @NSManaged var completed: Boolean
 
 }

@@ -51,6 +51,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,14 +97,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 /*
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
 
-        //let val: AnyObject = myList.removeAtIndex(sourceIndexPath.row)
-       // myList.insert(val, atIndex: destinationIndexPath.row)
-        //let item = myList.removeAtIndex(indexPath.row)
+        let item = myList[fromIndexPath.row]
+        myList.removeAtIndex(fromIndexPath.row)
+        myList.insert(item, atIndex: toIndexPath.row)
 
     }
 */
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+
+
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let contxt: NSManagedObjectContext = appDel.managedObjectContext!
         if editingStyle == UITableViewCellEditingStyle.Delete {
@@ -117,19 +120,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
-    /*
+/*
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
 
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let contxt: NSManagedObjectContext = appDel.managedObjectContext!
 
         var moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "More", handler:{action, indexpath in
             println("MORE•ACTION");
         });
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
 
+
+
         var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
 
-            let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-            let contxt: NSManagedObjectContext = appDel.managedObjectContext!
 
             contxt.deleteObject((self.myList[indexPath.row] as NSManagedObject))
             self.myList.removeAtIndex(indexPath.row)
@@ -138,7 +143,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         })
 
 
-        return [deleteRowAction, moreRowAction];
+        return [moreRowAction];
 
     }
 */
