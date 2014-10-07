@@ -85,15 +85,13 @@
 		D0C67C7219E3258D004D3707 /* Deprocrastinator */ = {
 			isa = PBXGroup;
 			children = (
+				D0C67CA119E398A8004D3707 /* Controllers */,
+				D0C67CA019E39888004D3707 /* Models */,
 				D0C67C7519E3258D004D3707 /* AppDelegate.swift */,
-				D0C67C7A19E3258D004D3707 /* ViewController.swift */,
 				D0C67C7C19E3258D004D3707 /* Main.storyboard */,
-				D0C67C9E19E391E9004D3707 /* ShowViewController.swift */,
-				D0C67C9C19E331E8004D3707 /* TodoModel.swift */,
-				D0C67C9819E3261A004D3707 /* TodoCell.swift */,
+				D0C67C7719E3258D004D3707 /* Deprocrastinator.xcdatamodeld */,
 				D0C67C7F19E3258D004D3707 /* Images.xcassets */,
 				D0C67C8119E3258D004D3707 /* LaunchScreen.xib */,
-				D0C67C7719E3258D004D3707 /* Deprocrastinator.xcdatamodeld */,
 				D0C67C7319E3258D004D3707 /* Supporting Files */,
 			);
 			path = Deprocrastinator;
@@ -122,6 +120,24 @@
 				D0C67C8D19E3258D004D3707 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D0C67CA019E39888004D3707 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D0C67C9C19E331E8004D3707 /* TodoModel.swift */,
+				D0C67C9819E3261A004D3707 /* TodoCell.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		D0C67CA119E398A8004D3707 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D0C67C7A19E3258D004D3707 /* ViewController.swift */,
+				D0C67C9E19E391E9004D3707 /* ShowViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

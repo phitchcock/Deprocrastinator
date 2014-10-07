@@ -17,8 +17,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var itemTextField: UITextField!
-    @IBOutlet weak var reOrder: UIBarButtonItem!
-    @IBOutlet weak var editButtonOutlet: UIButton!
 
     //IBActions
     @IBAction func onAddButtonPressed(sender: AnyObject) {
@@ -28,45 +26,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         itemTextField.resignFirstResponder()
     }
 
-    @IBAction func editButton(sender: AnyObject) {
-
-        editButtonOutlet.setTitle("done", forState: .Normal)
-
-        if editButtonOutlet.titleLabel == "done" {
-            tableView.setEditing(true, animated: true)
-        }
-
-        else {
-
-
-        }
-
-    }
-
-    @IBAction func cdEditButton(sender: AnyObject) {
-
-        
-    }
-
-    @IBAction func reorderButton(sender: AnyObject) {
-
-
-    }
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var showVC = segue.destinationViewController as ShowViewController
-
         if segue.identifier == "update" {
             var selectedItem: NSManagedObject = myList[self.tableView.indexPathForSelectedRow()!.row] as NSManagedObject
-
             showVC.item = selectedItem.valueForKey("item") as String
             showVC.existingItem = selectedItem
-
         }
-
-        
     }
-
 
     func saveData() {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -85,7 +52,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.reloadData()
     }
 
-
     override func viewDidAppear(animated: Bool) {
         getData()
     }
@@ -93,7 +59,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -116,35 +81,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
 
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-
-        let alert = UIAlertController(title: "Item selected", message: "You selected item \(indexPath.row)", preferredStyle: UIAlertControllerStyle.Alert)
-
-        alert.addAction(UIAlertAction(title: "OK",
-            style: UIAlertActionStyle.Default,
-            handler: {
-                (alert: UIAlertAction!) in println("An alert of type \(alert.style.hashValue) was tapped!")
-        }))
-
-        self.presentViewController(alert, animated: true, completion: nil)
-
-    }
-    /*
-
-    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-*/
-
-
-    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-
-
-        
-
-    }
-
-/*
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 
 
@@ -160,9 +96,34 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
     }
-*/
+
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
 
 /*
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+
+        let alert = UIAlertController(title: "Item selected", message: "You selected item \(indexPath.row)", preferredStyle: UIAlertControllerStyle.Alert)
+
+        alert.addAction(UIAlertAction(title: "OK",
+            style: UIAlertActionStyle.Default,
+            handler: {
+                (alert: UIAlertAction!) in println("An alert of type \(alert.style.hashValue) was tapped!")
+        }))
+
+        self.presentViewController(alert, animated: true, completion: nil)
+
+    }
+
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+
+    }
+
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
 
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -189,10 +150,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     }
 */
-    /*
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        self.view.endEditing(true)
-    }
-*/
+
+
 }
 

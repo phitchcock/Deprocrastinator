@@ -17,34 +17,28 @@ class ShowViewController: UIViewController {
 
     //IBOutlets
     @IBOutlet weak var itemTextField: UITextField!
+    @IBOutlet weak var updatedLabel: UILabel!
 
     //IBActions
     @IBAction func updateButtonPressed(sender: AnyObject) {
-
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let contxt: NSManagedObjectContext = appDel.managedObjectContext!
-
         if (existingItem != nil) {
-
             existingItem.setValue(itemTextField.text as String, forKey: "item")
-
-            itemTextField.text = ""
+            updatedLabel.text = "Your todo has been updated to \(itemTextField.text), would you like to update again?"
 
             contxt.save(nil)
-            
+            itemTextField.text = ""
         }
-        
     }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
         itemTextField.text = item
+        updatedLabel.text = "Would you like to update your item?"
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-
 }
