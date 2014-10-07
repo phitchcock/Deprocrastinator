@@ -35,6 +35,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
+    /*
+    @IBAction func onEditButtonPressed(sender: AnyObject) {
+        tableView.editing = !tableView.editing
+        if (editing == true) {
+            sender.setTitle("Done", forState: UIControlState.Normal)
+            tableView.setEditing(false, animated: true)
+            editing = true
+        } else if (editing == false) {
+            sender.setTitle("Edit", forState: UIControlState.Normal)
+            tableView.setEditing(true, animated: true)
+            editing = true
+        }
+    }
+    */
+
     func saveData() {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let contxt: NSManagedObjectContext = appDel.managedObjectContext!
@@ -144,6 +159,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.presentViewController(alert, animated: true, completion: nil)
 
     }
+*/
+
 
     func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
@@ -151,7 +168,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
 
+        var moveItem: AnyObject = self.myList[sourceIndexPath.row]
+        self.myList.removeAtIndex(sourceIndexPath.row)
+        self.myList.insert(moveItem, atIndex: destinationIndexPath.row)
+
+        //myList[self.tableView.indexPathForSelectedRow().row]
+        //NSString *stringToMove = self.tableData[sourceIndexPath.row];
+        //[self.tableData removeObjectAtIndex:sourceIndexPath.row];
+        //[self.tableData insertObject:stringToMove atIndex:destinationIndexPath.row];
+
     }
+/*
 
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
 
