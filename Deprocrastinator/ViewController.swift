@@ -82,23 +82,52 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-
-
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let contxt: NSManagedObjectContext = appDel.managedObjectContext!
+
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            contxt.deleteObject((myList[indexPath.row] as NSManagedObject))
-            myList.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-            var error: NSError? = nil
-            if !contxt.save(&error) {
-                abort()
+
+            var alert = UIAlertController(title: "Are You Sure?", message: "Plesae make sure you would like to remove this task!", preferredStyle: UIAlertControllerStyle.Alert)
+
+            var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                UIAlertAction in
+                NSLog("OK Pressed")
+                contxt.deleteObject((self.myList[indexPath.row] as NSManagedObject))
+                self.myList.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                var error: NSError? = nil
+                if !contxt.save(&error) {
+                    abort()
+                }
             }
+
+            var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
+                UIAlertAction in
+                NSLog("Cancel Pressed")
+            }
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+
         }
     }
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.view.endEditing(true)
+    }
+
+    override func setEditing(editing: Bool, animated: Bool) {
+
+        super.setEditing(true, animated: true)
+        self.tableView.setEditing(true, animated: true)
+
+        if (editing) {
+
+        } else {
+
+
+        }
     }
 
 /*
