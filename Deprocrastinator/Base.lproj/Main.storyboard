@@ -100,7 +100,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="jzc-P8-WwG">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item has been updated" minimumFontSize="17" clearButtonMode="whileEditing" id="jzc-P8-WwG">
                                 <rect key="frame" x="16" y="95" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -110,7 +110,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="E49-1B-J79">
-                        <barButtonItem key="rightBarButtonItem" title="Update" id="6FK-cR-Ugp"/>
+                        <barButtonItem key="rightBarButtonItem" title="Update" id="6FK-cR-Ugp">
+                            <connections>
+                                <action selector="updateButtonPressed:" destination="OFG-TS-Abp" id="9VG-J1-dKK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="itemTextField" destination="jzc-P8-WwG" id="qE2-eY-MyW"/>

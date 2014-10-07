@@ -60,7 +60,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             var selectedItem: NSManagedObject = myList[self.tableView.indexPathForSelectedRow()!.row] as NSManagedObject
 
             showVC.item = selectedItem.valueForKey("item") as String
-
+            showVC.existingItem = selectedItem
 
         }
 
