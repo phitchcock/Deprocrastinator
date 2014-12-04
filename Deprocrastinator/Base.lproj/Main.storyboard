@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="gbo-JB-KUE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C68m" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="gbo-JB-KUE">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Deprocrastinator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="buf-nF-wks"/>
+                        <viewControllerLayoutGuide type="bottom" id="fkM-PL-h8T"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Add Item" minimumFontSize="17" clearButtonMode="whileEditing" id="1JG-qE-J1A">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Add Item" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1JG-qE-J1A">
                                 <rect key="frame" x="16" y="72" width="288" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="UrW-2A-zeu"/>
+                                </constraints>
                                 <color key="textColor" red="0.090196078430000007" green="0.6705882353" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -22,9 +29,8 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="oO2-zV-LDa"/>
                                 </connections>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="TZ6-pS-eeR">
-                                <rect key="frame" x="0.0" y="188" width="320" height="380"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TZ6-pS-eeR">
+                                <rect key="frame" x="0.0" y="198" width="320" height="370"/>
                                 <color key="backgroundColor" red="0.15686274509803921" green="0.29019607843137257" blue="0.3843137254901961" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" showsReorderControl="YES" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dCell" rowHeight="70" id="6Iy-co-8Qm" customClass="TodoCell" customModule="Deprocrastinator" customModuleProvider="target">
@@ -32,9 +38,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Iy-co-8Qm" id="u3H-gO-E3q">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wp9-Qz-zOE">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wp9-Qz-zOE">
                                                     <rect key="frame" x="8" y="24" width="279" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <color key="textColor" red="0.090196078430000007" green="0.6705882353" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -53,9 +58,11 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="vkt-Wr-9xg"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dOA-Zi-kQB">
-                                <rect key="frame" x="129" y="135" width="63" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOA-Zi-kQB">
+                                <rect key="frame" x="16" y="135" width="288" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="8Gr-vW-ju7"/>
+                                </constraints>
                                 <state key="normal" title="Add Item">
                                     <color key="titleColor" red="0.7725490196" green="0.92549019610000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -66,6 +73,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.15686274509803921" green="0.29019607843137257" blue="0.3843137254901961" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="TZ6-pS-eeR" firstAttribute="top" secondItem="dOA-Zi-kQB" secondAttribute="bottom" constant="8" id="19O-sS-frH"/>
+                            <constraint firstItem="TZ6-pS-eeR" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="1Tu-mC-ZBf"/>
+                            <constraint firstItem="dOA-Zi-kQB" firstAttribute="top" secondItem="1JG-qE-J1A" secondAttribute="bottom" constant="8" id="8DL-Cz-r5y"/>
+                            <constraint firstItem="1JG-qE-J1A" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="DoO-VA-N1V"/>
+                            <constraint firstItem="dOA-Zi-kQB" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="JKh-Gr-IXM"/>
+                            <constraint firstItem="1JG-qE-J1A" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="NPK-aj-vPC"/>
+                            <constraint firstItem="dOA-Zi-kQB" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="SKP-hi-Z73"/>
+                            <constraint firstItem="fkM-PL-h8T" firstAttribute="top" secondItem="TZ6-pS-eeR" secondAttribute="bottom" id="Tel-mB-Xh0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TZ6-pS-eeR" secondAttribute="trailing" constant="-16" id="U3z-xz-gfn"/>
+                            <constraint firstItem="1JG-qE-J1A" firstAttribute="top" secondItem="buf-nF-wks" secondAttribute="bottom" constant="8" id="WSG-Jm-prg"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ip9-bb-gnc">
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="tkP-rf-IAw">
@@ -85,26 +104,40 @@
         <scene sceneID="abA-52-xVD">
             <objects>
                 <viewController id="OFG-TS-Abp" customClass="ShowViewController" customModule="Deprocrastinator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eFs-GI-OEM"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vpt-lu-W3u"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DtE-kJ-LYh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Item has been updated" minimumFontSize="17" clearButtonMode="whileEditing" id="jzc-P8-WwG">
-                                <rect key="frame" x="16" y="71" width="288" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Item has been updated" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jzc-P8-WwG">
+                                <rect key="frame" x="16" y="71" width="288" height="31"/>
                                 <color key="textColor" red="0.090196078431372548" green="0.6705882352941176" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q4l-Xr-QKv">
-                                <rect key="frame" x="16" y="139" width="288" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4l-Xr-QKv">
+                                <rect key="frame" x="16" y="115" width="288" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="2ft-PY-xJW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="0.74117647060000003" green="0.91372549020000005" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.20392156862745098" green="0.36078431372549019" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Q4l-Xr-QKv" firstAttribute="top" secondItem="jzc-P8-WwG" secondAttribute="bottom" constant="13" id="0q3-dD-97S"/>
+                            <constraint firstItem="Q4l-Xr-QKv" firstAttribute="leading" secondItem="DtE-kJ-LYh" secondAttribute="leadingMargin" id="2gu-HS-vGZ"/>
+                            <constraint firstItem="Q4l-Xr-QKv" firstAttribute="trailing" secondItem="DtE-kJ-LYh" secondAttribute="trailingMargin" id="7rE-Jm-24s"/>
+                            <constraint firstItem="jzc-P8-WwG" firstAttribute="leading" secondItem="DtE-kJ-LYh" secondAttribute="leadingMargin" id="Bce-F4-vBl"/>
+                            <constraint firstItem="jzc-P8-WwG" firstAttribute="trailing" secondItem="DtE-kJ-LYh" secondAttribute="trailingMargin" id="IxG-RO-xqY"/>
+                            <constraint firstItem="jzc-P8-WwG" firstAttribute="top" secondItem="eFs-GI-OEM" secondAttribute="bottom" constant="7" id="cQX-Iq-aTi"/>
+                            <constraint firstItem="Q4l-Xr-QKv" firstAttribute="top" secondItem="jzc-P8-WwG" secondAttribute="bottom" constant="13" id="ivd-tK-goX"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="E49-1B-J79">
                         <barButtonItem key="rightBarButtonItem" title="Update" id="6FK-cR-Ugp">
